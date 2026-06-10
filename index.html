@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berkay Türk — Aeronautical Engineer</title>
+<meta name="description" content="Portfolio of Berkay Türk — CFD, Gas Turbine Propulsion, Predictive Maintenance AI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf9;
+    --mid: #6b6b6b;
+    --light: #c8c8c4;
+    --border: #e4e4e0;
+    --accent: #0a0a0a;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(250,250,249,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: .06em;
+    color: var(--black);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* LAYOUT */
+  .container { max-width: 740px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .sec-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--mid);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  /* HERO */
+  #hero {
+    padding-top: 9rem;
+    padding-bottom: 5rem;
+  }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mid);
+    letter-spacing: .08em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: normal;
+    font-weight: 500;
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: var(--mid);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+  .chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--mid);
+    letter-spacing: .04em;
+  }
+  .hero-links { display: flex; gap: 1rem; align-items: center; }
+  .btn {
+    font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: .06em;
+    padding: 9px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all .2s;
+    cursor: pointer;
+    border: 1px solid var(--black);
+  }
+  .btn-dark { background: var(--black); color: var(--white); }
+  .btn-dark:hover { background: #222; }
+  .btn-outline { background: transparent; color: var(--black); }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+
+  /* ABOUT CARDS */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .about-card {
+    background: var(--white);
+    padding: 1.75rem;
+  }
+  .about-card-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--light);
+    margin-bottom: 1rem;
+  }
+  .about-card h3 { font-size: 13px; font-weight: 500; margin-bottom: .5rem; }
+  .about-card p { font-size: 13px; color: var(--mid); line-height: 1.65; }
+
+  /* EXPERIENCE */
+  .exp-item { display: grid; grid-template-columns: 130px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-meta { }
+  .exp-date { font-family: var(--mono); font-size: 11px; color: var(--mid); line-height: 1.6; }
+  .exp-loc { font-family: var(--mono); font-size: 11px; color: var(--light); margin-top: 4px; }
+  .exp-company { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .exp-role { font-size: 13px; color: var(--mid); margin-bottom: 1rem; }
+  .exp-list { list-style: none; }
+  .exp-list li {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .exp-list li::before { content: "–"; position: absolute; left: 0; color: var(--light); }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: .75rem; }
+  .exp-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--light);
+    letter-spacing: .04em;
+  }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .proj-card {
+    background: var(--white);
+    padding: 1.75rem;
+    transition: background .2s;
+  }
+  .proj-card:hover { background: #f4f4f2; }
+  .proj-card.full { grid-column: 1 / -1; }
+  .proj-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--light);
+    margin-bottom: 1rem;
+  }
+  .proj-card h3 { font-size: 13px; font-weight: 500; margin-bottom: .5rem; line-height: 1.4; }
+  .proj-card p { font-size: 12px; color: var(--mid); line-height: 1.65; margin-bottom: 1rem; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .proj-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--mid);
+  }
+
+  /* PUBLICATIONS */
+  .pub-item { padding: 1.75rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-year { font-family: var(--mono); font-size: 11px; color: var(--light); padding-top: 3px; }
+  .pub-title { font-size: 13px; font-weight: 500; margin-bottom: .3rem; line-height: 1.5; }
+  .pub-venue { font-family: var(--mono); font-size: 11px; color: var(--mid); }
+
+  /* SKILLS */
+  .skills-table { width: 100%; border-collapse: collapse; }
+  .skills-table tr { border-bottom: 1px solid var(--border); }
+  .skills-table tr:last-child { border-bottom: none; }
+  .skills-table td { padding: 1rem 0; vertical-align: top; }
+  .skills-table td:first-child {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: .06em;
+    width: 140px;
+    padding-right: 2rem;
+    padding-top: 1.1rem;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-pill {
+    font-size: 12px;
+    padding: 4px 11px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--black);
+  }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .contact-item {
+    background: var(--white);
+    padding: 1.5rem 1.75rem;
+  }
+  .contact-label { font-family: var(--mono); font-size: 11px; color: var(--light); margin-bottom: .4rem; letter-spacing: .06em; }
+  .contact-val { font-size: 13px; color: var(--black); text-decoration: none; }
+  .contact-val:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span { font-family: var(--mono); font-size: 11px; color: var(--light); }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+    .hero-name { font-size: 34px; }
+    .about-grid, .proj-grid, .contact-grid { grid-template-columns: 1fr; }
+    .proj-card.full { grid-column: 1; }
+    .exp-item { grid-template-columns: 1fr; gap: .5rem; }
+    .exp-meta { display: flex; gap: 1rem; }
+    .pub-item { grid-template-columns: 1fr; gap: .3rem; }
+    .pub-year { display: none; }
+    .skills-table td:first-child { width: 100px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">BT_</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#publications">publications</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-kicker">Aeronautical Engineering · Eskişehir · 2026</p>
+    <h1 class="hero-name">Berkay<br><em>Türk</em></h1>
+    <p class="hero-desc">CFD & gas turbine propulsion researcher. AI-driven predictive maintenance developer. 3× aerospace & manufacturing intern. Graduating June 2026.</p>
+    <div class="hero-chips">
+      <span class="chip">TÜBİTAK</span>
+      <span class="chip">SAYZEK-2025</span>
+      <span class="chip">TEKNOFEST 2024</span>
+      <span class="chip">Kale Aero</span>
+      <span class="chip">Hyundai Motor</span>
+      <span class="chip">Coşkunöz Aerospace</span>
+    </div>
+    <div class="hero-links">
+      <a href="#contact" class="btn btn-dark">Get in touch</a>
+      <a href="#projects" class="btn btn-outline">View projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container reveal">
+    <p class="sec-eyebrow">About</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <p class="about-card-num">01</p>
+        <h3>CFD & Propulsion</h3>
+        <p>3D RANS simulations (Ansys Fluent, k-ω SST) on turbofan components. Tip clearance, leakage vortex, and pressure loss analysis in axial gas turbines.</p>
+      </div>
+      <div class="about-card">
+        <p class="about-card-num">02</p>
+        <h3>Machine Learning</h3>
+        <p>LSTM-based Remaining Useful Life prediction on NASA C-MAPSS. Anomaly detection, explainable AI (SHAP/LIME), and digital twin visualization.</p>
+      </div>
+      <div class="about-card">
+        <p class="about-card-num">03</p>
+        <h3>Manufacturing & Quality</h3>
+        <p>AS9100 Rev D compliance, CNC milling & turning, CMM metrology, GD&T interpretation. 3× internships at Kale Aero, Hyundai, and Coşkunöz Aerospace.</p>
+      </div>
+      <div class="about-card">
+        <p class="about-card-num">04</p>
+        <h3>Programming</h3>
+        <p>Python (TensorFlow, Pandas, NumPy, Scikit-learn, Matplotlib), MATLAB, Julia. Performance cycle automation cutting iteration time by ~60%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Experience</p>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-date">Aug 2025</p>
+        <p class="exp-loc">Eskişehir, TR</p>
+      </div>
+      <div>
+        <p class="exp-company">Coşkunöz Aerospace</p>
+        <p class="exp-role">Production Intern</p>
+        <ul class="exp-list">
+          <li>End-to-end aerospace manufacturing: CNC 5-axis machining, first-article inspection, in-process quality control</li>
+          <li>AS9100 part serialisation, traveller documentation, raw-material-to-finished-part traceability</li>
+          <li>OEE tracking, reject analysis, and lean manufacturing in a high-compliance environment</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">AS9100</span><span class="exp-tag">CNC</span><span class="exp-tag">OEE</span><span class="exp-tag">Lean</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-date">Jul – Aug 2025</p>
+        <p class="exp-loc">Kocaeli, TR</p>
+      </div>
+      <div>
+        <p class="exp-company">Hyundai Motor Company</p>
+        <p class="exp-role">Advanced Manufacturing Engineering Intern</p>
+        <ul class="exp-list">
+          <li>Robotic cell efficiency analysis and cycle-time optimisation via VSM mapping</li>
+          <li>Rapid prototyping with FDM/SLA 3D printing integrated with CNC automation</li>
+          <li>DED & binder-jet additive manufacturing feasibility study; delivered technical summary report</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Robotics</span><span class="exp-tag">3D Printing</span><span class="exp-tag">DED</span><span class="exp-tag">VSM</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-date">Jun – Jul 2025</p>
+        <p class="exp-loc">İstanbul, TR</p>
+      </div>
+      <div>
+        <p class="exp-company">Kale Aero</p>
+        <p class="exp-role">Process Engineering Intern</p>
+        <ul class="exp-list">
+          <li>Monitored CNC milling & turning on aerospace structural components; ensured AS9100 Rev D conformance</li>
+          <li>CMM inspections and surface quality assessment, verifying tolerances to ±0.01 mm</li>
+          <li>GD&T annotation interpretation for non-conformance investigations and root cause analysis</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">CMM</span><span class="exp-tag">GD&T</span><span class="exp-tag">AS9100</span><span class="exp-tag">Metrology</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="exp-date">Sep 2024 – May 2025</p>
+        <p class="exp-loc">Eskişehir, TR</p>
+      </div>
+      <div>
+        <p class="exp-company">Eskişehir Osmangazi University</p>
+        <p class="exp-role">Research & Teaching Assistant</p>
+        <ul class="exp-list">
+          <li>Aerodynamics & propulsion lab sessions for 30+ undergraduate students</li>
+          <li>Research group coordination under department chair</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Projects</p>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <p class="proj-num">P-01</p>
+        <h3>AeroGuard — Predictive Maintenance Platform</h3>
+        <p>End-to-end AI system for gas turbine health management: LSTM RUL prediction, anomaly detection, XAI (SHAP/LIME) dashboards, digital twin visualization. TÜBİTAK 1812 HAVELSAN BİGG — Founder.</p>
+        <div class="proj-tags"><span class="proj-tag">LSTM</span><span class="proj-tag">XAI</span><span class="proj-tag">Digital Twin</span><span class="proj-tag">NASA C-MAPSS</span></div>
+      </div>
+
+      <div class="proj-card">
+        <p class="proj-num">P-02</p>
+        <h3>HPC Blade Tip Clearance Degradation</h3>
+        <p>Physics-informed LSTM modelling HPC radial tip clearance degradation and RUL prediction under multi-operational conditions. SAYZEK-2025 Defense AI Cluster.</p>
+        <div class="proj-tags"><span class="proj-tag">Deep Learning</span><span class="proj-tag">Physics-Informed</span><span class="proj-tag">HPC</span></div>
+      </div>
+
+      <div class="proj-card">
+        <p class="proj-num">P-03</p>
+        <h3>Honeycomb Tip Clearance CFD Study</h3>
+        <p>3D RANS parametric sweep of 6 honeycomb geometries on tip leakage vortex intensity and aerodynamic losses in axial gas turbine rotors. TÜBİTAK 2209-A.</p>
+        <div class="proj-tags"><span class="proj-tag">Ansys Fluent</span><span class="proj-tag">RANS</span><span class="proj-tag">k-ω SST</span></div>
+      </div>
+
+      <div class="proj-card">
+        <p class="proj-num">P-04</p>
+        <h3>TEKNOFEST 2024 Turbofan Design</h3>
+        <p>CFD aerodynamic + performance cycle analysis for a conceptual turbofan. Python automation scripts reduced design iteration time by ~60%.</p>
+        <div class="proj-tags"><span class="proj-tag">CFD</span><span class="proj-tag">Cycle Analysis</span><span class="proj-tag">Python</span></div>
+      </div>
+
+      <div class="proj-card full">
+        <p class="proj-num">P-05</p>
+        <h3>Long-Endurance UAV Glider — Forest Fire Detection</h3>
+        <p>Autonomous fixed-wing UAV for early wildfire surveillance in the Aegean & Mediterranean regions. Aerodynamic design, L/D optimisation, thermal & multispectral sensor integration. BAP Scientific Research Project.</p>
+        <div class="proj-tags"><span class="proj-tag">UAV</span><span class="proj-tag">Aerodynamics</span><span class="proj-tag">Sensor Integration</span><span class="proj-tag">BAP</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Publications</p>
+
+    <div class="pub-item">
+      <span class="pub-year">2026</span>
+      <div>
+        <p class="pub-title">Remaining Useful Life Prediction in Gas Turbine Engines: Comparison of Physics-Inspired Feature Engineering and Raw Deep Learning Approaches</p>
+        <p class="pub-venue">UHUK 2026 — National Aviation & Space Conference</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2025</span>
+      <div>
+        <p class="pub-title">Investigation of the Role of the Downwash Effect of the NACA 64-209 Wing Profile on Performance Parameters Using 2D and 3D Numerical Analyses</p>
+        <p class="pub-venue">TMMOB XIII. National Aircraft, Aerospace & Astronautics Engineering Congress</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2025</span>
+      <div>
+        <p class="pub-title">Motor Glider</p>
+        <p class="pub-venue">Machine Journal, April 2025</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Skills</p>
+    <table class="skills-table">
+      <tr>
+        <td>Simulation</td>
+        <td><div class="skill-pills"><span class="skill-pill">Ansys Fluent</span><span class="skill-pill">DesignModeler</span><span class="skill-pill">RANS</span><span class="skill-pill">k-ω SST</span><span class="skill-pill">CFD</span><span class="skill-pill">Mesh Generation</span></div></td>
+      </tr>
+      <tr>
+        <td>Programming</td>
+        <td><div class="skill-pills"><span class="skill-pill">Python</span><span class="skill-pill">MATLAB</span><span class="skill-pill">Julia</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span></div></td>
+      </tr>
+      <tr>
+        <td>ML / AI</td>
+        <td><div class="skill-pills"><span class="skill-pill">LSTM</span><span class="skill-pill">Anomaly Detection</span><span class="skill-pill">XAI</span><span class="skill-pill">SHAP</span><span class="skill-pill">LIME</span><span class="skill-pill">Digital Twin</span></div></td>
+      </tr>
+      <tr>
+        <td>Manufacturing</td>
+        <td><div class="skill-pills"><span class="skill-pill">AS9100 Rev D</span><span class="skill-pill">CNC</span><span class="skill-pill">CMM</span><span class="skill-pill">GD&T</span><span class="skill-pill">Metrology</span><span class="skill-pill">FDM/SLA/DED</span></div></td>
+      </tr>
+      <tr>
+        <td>Languages</td>
+        <td><div class="skill-pills"><span class="skill-pill">Turkish — Native</span><span class="skill-pill">English — B2</span></div></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Training & Certifications</p>
+    <div class="exp-item" style="padding-top:0">
+      <div class="exp-meta"><p class="exp-date">2025</p></div>
+      <div><p class="exp-company" style="font-size:13px">Aviation Engines School</p><p class="exp-role">TUSAŞ Engine Industries (TEI)</p></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><p class="exp-date">2024</p></div>
+      <div><p class="exp-company" style="font-size:13px">Turbofan Engine Design Training</p><p class="exp-role">TUSAŞ Engine Industries (TEI)</p></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><p class="exp-date">2023–24</p></div>
+      <div><p class="exp-company" style="font-size:13px">Technical Training</p><p class="exp-role">1st Eskişehir Air Supply Centre Command — Aviation Logistics & Maintenance</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <p class="sec-eyebrow">Contact</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="contact-label">EMAIL</p>
+        <a href="mailto:berkaytr68@gmail.com" class="contact-val">berkaytr68@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">PHONE</p>
+        <a href="tel:+905321360459" class="contact-val">+90 532 136 0459</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">LINKEDIN</p>
+        <a href="https://www.linkedin.com/in/berkay-turk-b07862246" target="_blank" class="contact-val">berkay-turk-b07862246</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">LOCATION</p>
+        <span class="contact-val">Eskişehir, Türkiye</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <footer>
+    <span>Berkay Türk © 2026</span>
+    <span>Aeronautical Engineering — ESOGÜ</span>
+  </footer>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
